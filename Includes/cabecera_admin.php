@@ -1,0 +1,1 @@
+<img src="../imagenes/Logo Horizontal SGC.jpg" width="50%" height="50%" />
