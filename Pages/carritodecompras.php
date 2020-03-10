@@ -1,6 +1,6 @@
 <?php
 	session_start();
-	require'/class_sesiones/dbactions.php';
+	require'../class_sesiones/dbactions.php';
      $dbc = new Database();
 	if(isset($_SESSION['carrito'])){
 		if(isset($_GET['id'])){
@@ -75,14 +75,14 @@
 <head>
 	<meta charset="utf-8"/>
 	<title>Carrito de Compras</title>
-	<link rel="stylesheet" type="text/css" href="./css/estilos.css">
+	<link rel="stylesheet" type="text/css" href="../css/estilos.css">
 	<script type="text/javascript"  href="./js/scripts.js"></script>
 </head>
 <body>
 	<header>
 		<h1>Carrito de compras - Movie rental</h1>
-		<a href="./carritodecompras.php" title="ver carrito de compras">
-			<img src="./imagenes/carrito.png">
+		<a href="../carritodecompras.php" title="ver carrito de compras">
+			<img src="../imagenes/carrito.png">
 		</a>
 	</header>
      <script>
@@ -94,7 +94,7 @@ function cerrar()
 		return false;
 }
 </script>
-    <div align="right"> <h3><a href="class_sesiones/log_out.php" onclick="return cerrar()" >Cerrar Sesi&oacute;n </a></h3></div>
+    <div align="right"> <h3><a href="../class_sesiones/log_out.php" onclick="return cerrar()" >Cerrar Sesi&oacute;n </a></h3></div>
 	<section>
 		<?php
 			$total=0;
@@ -107,7 +107,7 @@ function cerrar()
 	?>
 				<div class="producto">
 					<center>
-						<img src="./productos/<?php echo $datos[$i]['imagen'];?>"><br>
+						<img src="../productos/<?php echo $datos[$i]['imagen'];?>"><br>
 						<span><?php echo $datos[$i]['nombre'];?></span><br>
 						<span>Precio: <?php echo $datos[$i]['precio'];?></span><br>
 						
@@ -125,8 +125,8 @@ function cerrar()
 			echo '<center><h2>Total: $'.$total.'</h2></center>';
 		
 		?>
-		<center><a href="inicio.php">Ver catalogo</a></center></br>
-        <center><a href="Pages/comprar.php">FINALIZAR COMPRA</a></center>
+		<center><a href="../inicio.php">Ver catalogo</a></center></br>
+        <center><a href="comprar.php">FINALIZAR COMPRA</a></center>
 		
 		
 

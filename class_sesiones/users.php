@@ -36,11 +36,11 @@ $query = "SELECT u.IDUsuario, u.usuario, r.idrol FROM usuarios as u, roles as r 
 				switch($this->useropc){
 					
 					case '1':
-                        header("Location:Pages/admin/index_admin.php");		 						break;
+                        header("Location:../Pages/admin/index_admin.php");		 						break;
 						
 						
 					case '2':
-		                header("location:inicio.php");	
+		                header("location:../inicio.php");	
 						break;
 						
 											

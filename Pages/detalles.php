@@ -44,7 +44,7 @@
                 <span><?php if ($row['Disponible']==1)   echo 'SI'; else echo 'NO'
 		  ;?></span><br>
                 
-				<a href="../carritodecompras.php?id=<?php echo $row['Cod_producto']; ?>">Añadir al Carrito</a>
+				<a href="carritodecompras.php?id=<?php echo $row['Cod_producto']; ?>">Añadir al Carrito</a>
 			</center>
 		</div>
 	<?php

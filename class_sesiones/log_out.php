@@ -6,6 +6,6 @@ $objses->init();
 
 $objses->destroy();
 
-	header("Location:index.php");
+	header("Location:../index.php");
 
 ?>
