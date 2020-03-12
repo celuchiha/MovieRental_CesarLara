@@ -41,7 +41,11 @@ class Users{
 				switch($this->useropc){
 					
 					case '1':
+<<<<<<< HEAD
                         header("Location:../Pages/admin/movies.php");		 						break;
+=======
+                        header("Location:../Pages/admin/index_admin.php");		 						break;
+>>>>>>> origin/master
 						
 						
 					case '2':

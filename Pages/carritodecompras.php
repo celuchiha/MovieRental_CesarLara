@@ -1,8 +1,14 @@
 <?php
+<<<<<<< HEAD:Pages/carritodecompras.php
 	require'../class_sesiones/config.php';       
 		$con = new  Connection();
 		$pdo = $con->get_connected();
 
+=======
+	session_start();
+	require'../class_sesiones/dbactions.php';
+     $dbc = new Database();
+>>>>>>> origin/master:Pages/carritodecompras.php
 	if(isset($_SESSION['carrito'])){
 		if(isset($_GET['id'])){
 					$arreglo=$_SESSION['carrito'];
