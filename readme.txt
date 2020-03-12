@@ -17,4 +17,4 @@ Los archivos de configuracion a la base de datos estan en:
 
 el backup de la base de datos utilizada se llama: bd_movierental_bk.sql
 
-
+La aplicación de la API rest se realizó un ejercicio de GET, POST, PUT, DELETE de usuarios dentro de la base de datos estos métodos son accionados desde la clase /src/rutas/usuarios.php
