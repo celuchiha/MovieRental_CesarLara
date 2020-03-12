@@ -6,9 +6,10 @@ $objses->vars();
 	
 	
 //instancia de conexion BD
-	
-require'../../class_sesiones/dbactions.php';
-$dbc = new Database(); 
+require'../../class_sesiones/config.php';
+$con = new  Connection();
+$pdo = $con->get_connected();
+
 
 //captura de datos enviados del formulario
 	
@@ -31,8 +32,11 @@ $dbc = new Database();
 	if ($archivo != "") {
         // guardamos el archivo a la carpeta Archhivos
          $destino =  "../../productos/".$archivo;
+	
         if (copy($ruta,$destino)) {
             $status = "Archivo subido: <b>".$archivo."</b>"; 
+		}
+	}
 
 	
   $query="UPDATE peliculas SET
@@ -45,9 +49,11 @@ $dbc = new Database();
 `Disponible` = '$Disponible'
 WHERE `Cod_producto` = '$id';";
 
-  	$resultado=$dbc->select($query);
+   $result=$pdo->prepare($query);
+		
+	$result->execute();	
 	
-	if($resultado>0){
+	if($result ==true){
 				
 				
  echo "<script type=\"text/javascript\">alert('Los datos fueron modificados con exito!');  history.go(-2);</script>";
@@ -59,8 +65,7 @@ WHERE `Cod_producto` = '$id';";
 			
 				
 	} 
-		}
-	}
+		
 	?>
 	
 

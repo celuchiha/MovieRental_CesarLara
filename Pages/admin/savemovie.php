@@ -8,8 +8,9 @@ $objses->vars();
 	
 //instancia de conexion BD
 	
-require'../../class_sesiones/dbactions.php';
-$dbc = new Database();
+require'../../class_sesiones/config.php';
+$con = new  Connection();
+$pdo = $con->get_connected();
 ?>
 
 
@@ -52,8 +53,13 @@ VALUES
 '".$Precio."',
 '".$Stock."',
 '".$Precio_renta."',
-'1')";	 
-   	$resultado=$dbc->select($query);
+'1')";	
+	
+	$result=$pdo->prepare($query);
+		
+	$result->execute();	
+			
+   	if ($result == true ){
    
 echo"<script type=\"text/javascript\">alert('Los datos se guardaron con exito!'); window.location='movies.php';</script>";; 
         } else {
@@ -61,6 +67,7 @@ echo"<script type=\"text/javascript\">alert('Los datos se guardaron con exito!')
         }
     } 
 	
+	}
 	}
 	
 	

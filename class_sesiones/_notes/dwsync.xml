@@ -2,10 +2,12 @@
 <dwsync>
 <file name="config.php" server="C:/wamp/www/proyecto/" local="130833898725535613" remote="130833898720000000" Dst="0" />
 <file name="dbactions.php" server="C:/wamp/www/proyecto/" local="130836299485577230" remote="130836299480000000" Dst="0" />
-<file name="sessions.php" server="C:/wamp/www/proyecto/" local="130833832995575718" remote="130833832990000000" Dst="0" />
-<file name="users.php" server="C:/wamp/www/proyecto/" local="130836303731831471" remote="130836303730000000" Dst="0" />
 <file name="config.php" server="C:/wamp/www/carrito/" local="131062704477882987" remote="131062704470000000" Dst="0" />
-<file name="users.php" server="C:/wamp/www/carrito/" local="131065421755032828" remote="131065421750000000" Dst="0" />
 <file name="dbactions.php" server="C:/wamp/www/carrito/" local="131065372450630094" remote="131065372450000000" Dst="0" />
-<file name="sessions.php" server="C:/wamp/www/carrito/" local="130833832995575718" remote="130833832990000000" Dst="0" />
+<file name="log_out.php" server="C:/wamp/www/" local="132282769372332007" remote="132282769370000000" Dst="0" />
+<file name="config.php" server="C:/wamp64/www" local="132282805240000000" remote="132282805240000000" Dst="0" />
+<file name="users.php" server="C:/wamp64/www" local="132282797120000000" remote="132282797120000000" Dst="0" />
+<file name="dbactions.php" server="C:/wamp64/www" local="132280957720000000" remote="132280957720000000" Dst="0" />
+<file name="sessions.php" server="C:/wamp64/www" local="132281120780000000" remote="132281120780000000" Dst="0" />
+<file name="checklogin2.php" server="C:/wamp64/www" local="132282792460000000" remote="132282792460000000" Dst="0" />
 </dwsync>

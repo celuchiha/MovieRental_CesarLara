@@ -5,11 +5,10 @@ $objses->init();
 $objses->vars();
 	
 	
-	
 //instancia de conexion BD
-	
-require'../../class_sesiones/dbactions.php';
-$dbc = new Database();
+require'../../class_sesiones/config.php';
+$con = new  Connection();
+$pdo = $con->get_connected();
 
 //captura de ID de los datos enviados del formulario
  
@@ -20,10 +19,11 @@ $dbc = new Database();
 	$query="SELECT * FROM peliculas
 		 WHERE Cod_producto='$Cod_producto'";
 	
+    $result=$pdo->prepare($query);
+		
+	$result->execute();	
 	
-	$resultado=$dbc->select($query);
-	
-	$row=$resultado->fetch_assoc();
+	$row=$result->fetch(PDO::FETCH_ASSOC);
 ?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
@@ -33,7 +33,7 @@ $dbc = new Database();
 
 <title>Modificar pelicula</title>
 
--->
+
 <style type="text/css">
     .box{
         

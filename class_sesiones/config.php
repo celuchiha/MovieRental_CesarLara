@@ -1,30 +1,20 @@
 <?php
 
-class Connection{
+class Connection{		
 	
-	//variables para los datos de la base de datos
-	public $server;
-	public $userdb;
-	public $passdb;
-	public $dbname;
+	private $dbHost = '127.0.0.1:3306';
+	private $dbUser = 'root';
+	private $dbPass = '';
+	private $dbName = 'bd_movierental'; 
 	
-	public function __construct(){
-		
-		//Iniciar las variables con los datos de la base de datos
-		$this->server = 'localhost';
-		$this->userdb = 'root';
-		$this->passdb = '74528075';
-		$this->dbname = 'bd_movierental';
-		
-	}
+	//connection
 	
 	public function get_connected(){
 		
-		//Para conectarnos a MySQL
-		$con = mysqli_connect($this->server, $this->userdb, $this->passdb);
-		//Nos conectamos a la base de datos que vamos a usar
-		mysqli_select_db( $con,$this->dbname);
-		
+		$mysqlConnect = "mysql:host=$this->dbHost;dbname=$this->dbName";
+		$dbConnection = new PDO($mysqlConnect, $this->dbUser, $this->dbPass);
+		$dbConnection->setAttribute(PDO::ATTR_ERRMODE,PDO::ERRMODE_EXCEPTION);
+		return $dbConnection; 
 	}
 	
 }

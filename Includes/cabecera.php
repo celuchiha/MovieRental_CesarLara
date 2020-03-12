@@ -1,1 +1,0 @@
-<img src="imagenes/12_gr_u dr matias.jpg" width="300" height="270" alt="logo_matias">

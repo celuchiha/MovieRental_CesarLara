@@ -13,8 +13,9 @@ if ($usuario == ''){
 	}
 	
 //instancia de conexion BD
-require'../../class_sesiones/dbactions.php';
-$dbc = new Database();
+require'../../class_sesiones/config.php';
+$con = new  Connection();
+$pdo = $con->get_connected();
 
  ?>
 
@@ -52,11 +53,8 @@ $dbc = new Database();
   <div class="content"  style="max-width:100%; max-height:100%;">
   <link rel="stylesheet" href="../CSS/bootstrap/css/bootstrap.css" />
       
-     <div align="right"><a href="../log_out.php" onclick="return cerrar()" >Cerrar Sesion </a></div>  
-    
-    <h3> <a href="index_admin.php">Ir a men&uacute; principal</a></h3>
-    <h1>Administrar Peliculas</h1>
-    
+     <div align="right"><a href="../log_out.php" onclick="return cerrar()" >Cerrar Sesion </a></div>      
+       
     <h3> <a href="add_movie.php">A&ntilde;adir Pelicula</a></h3>
 <h2>Inventario de Peliculas</h2>
 
@@ -96,42 +94,34 @@ function cerrar()
    $query="SELECT * FROM peliculas";
    
 
-   	$resultado=$dbc->select($query);
+   	$result=$pdo->prepare($query);
 		
-	/*if ($resultado['Disponible'] == 1)
-	{
-		echo 'SI';
-		
-	}
-	else{
-		echo 'NO';
-		}*/
-		
+	$result->execute();	
 		
 	?>
   
-  <table width="1571" border = '1'> 
+  <table width="1300" border = '1'> 
   <tr width="60">
-  <td width="83" ><strong>Nombre  </strong></td>
-  <td width="86"><strong>Descripción  </strong></td>
-  <td width="119"><strong>Portada</strong></td>
+  <td width="83" align="center"><strong>Nombre  </strong></td>
+  <td width="86" align="center"><strong>Descripción  </strong></td>
+  <td width="119" align="center"><strong>Portada</strong></td>
   <td width="70" align="center"><strong>Precio</strong></td>
   <td width="70" align="center"><strong>Unidades en Stock</strong></td>  
-  <td width="70"><strong>Precio Renta</strong></td>
-  <td width="70"><strong>Disponible</strong></td>    
+  <td width="70" align="center"><strong>Precio Renta</strong></td>
+  <td width="70" align="center"><strong>Disponible</strong></td>    
   <td width="59"> </td>
   <td width="65"> </td>
   
     </tr>
-  <?php while($row=$resultado->fetch_assoc()){ ?>
+  <?php while($row=$result->fetch(PDO::FETCH_ASSOC)){ ?>
            <tr>
            <td> <?php echo $row['Nombre'];?> </td>
            <td> <?php echo $row['Descripcion'];?> </td>
-           <td height="auto" width="auto"><img src="../../productos/<?php echo $row['Imagen'];?>" style="max-width: 100px; max-height: 100px" > </td>
+           <td align="center"><img src="../../productos/<?php echo $row['Imagen'];?>" style="max-width: 100px; max-height: 100px" > </td>
            <td align="center">$ <?php echo $row['Precio'];?> </td>
            <td align="center"> <?php echo $row['Stock'];?> </td>           
-           <td>$ <?php echo $row['Precio_renta'];?> </td>
-           <td> <?php if ($row['Disponible']==1)   echo 'SI'; else echo 'NO'
+           <td align="center">$ <?php echo $row['Precio_renta'];?> </td>
+           <td align="center"> <?php if ($row['Disponible']==1)   echo 'SI'; else echo 'NO'
 		  ;?> </td>           
          
         

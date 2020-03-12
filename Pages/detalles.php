@@ -16,16 +16,18 @@
 		
 	<?php
 	  
-		require'../class_sesiones/dbactions.php';
-        $dbc = new Database();
+		require'../class_sesiones/config.php';       
+		$con = new  Connection();
+		$pdo = $con->get_connected();
 		
 		$query="select * from peliculas WHERE Cod_producto=".$_GET['id'];
 		 
-		$resultado=$dbc->select($query);
+		$result=$pdo->prepare($query);
+		
+		$result->execute();	
 	
 	
-	
-		while ($row=$resultado->fetch_assoc()) {
+		while ($row=$result->fetch(PDO::FETCH_ASSOC)) {
 		?>
 
 
@@ -38,13 +40,13 @@
                  </tr>
                  </table>
 				<span><?php echo $row['Nombre'];?></span><br>
-                Descripcion del producto:<span><?php echo $row['Descripcion'];?></span><br>
+                Descripción:<span><?php echo $row['Descripcion'];?></span><br>
                 Precio: $<span><?php echo $row['Precio'];?></span><br>
                 Precio renta: $<span><?php echo $row['Precio_renta'];?></span><br>Disponible:
                 <span><?php if ($row['Disponible']==1)   echo 'SI'; else echo 'NO'
 		  ;?></span><br>
                 
-				<a href="../carritodecompras.php?id=<?php echo $row['Cod_producto']; ?>">Añadir al Carrito</a>
+				<a href="carritodecompras.php?id=<?php echo $row['Cod_producto']; ?>">Añadir al Carrito</a>
 			</center>
 		</div>
 	<?php

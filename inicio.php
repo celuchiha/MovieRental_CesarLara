@@ -8,8 +8,8 @@
 </head>
 <body>
 	<header>
-		<h1>Movie Rental - Full entretenimiento</h1>
-		<a href="carritodecompras.php" title="ver carrito de compras">
+		<h1>Movie Rental</h1>
+		<a href="Pages/carritodecompras.php" title="ver carrito de compras">
 			<img src="./imagenes/carrito.png">
 		</a>
       </header>
@@ -26,16 +26,20 @@ function cerrar()
 	<section>
 		
 	<?php
-		require'class_sesiones/dbactions.php';
-        $dbc = new Database();
+		//instancia de conexion BD
+		require'class_sesiones/config.php';
+		$con = new  Connection();
+		$pdo = $con->get_connected();
 		
 		$query="select * from peliculas ";
 		 
-		$resultado=$dbc->select($query);
+			$result=$pdo->prepare($query);
+		
+			$result->execute();	
 	
 	
 	
-		while ($row=$resultado->fetch_assoc()) {
+		while ($row=$result->fetch(PDO::FETCH_ASSOC)) {
 		?>
 
 

@@ -1,4 +1,7 @@
 <?php 
+
+//clase para eliminar registro de pelicula
+
 require'../../class_sesiones/sessions.php';
 $objses= new Sessions();
 $objses->init();
@@ -6,16 +9,19 @@ $objses->vars();
 	
 	
 //instancia de conexion BD
-	
-require'../../class_sesiones/dbactions.php';
-$dbc = new Database();
+require'../../class_sesiones/config.php';
+$con = new  Connection();
+$pdo = $con->get_connected();
 	
 	
   $id=$_GET['id'];
   $query="DELETE FROM peliculas WHERE Cod_producto='$id'";
-  $resultado=$dbc->select($query);
+   
+    $result=$pdo->prepare($query);
+		
+	$result->execute();	
 	
-	if($resultado>0){
+	if($result ==true){
 				
 				
  echo "<script type=\"text/javascript\">alert('El registro fue Eliminado con exito!'); window.location='movies.php';</script>";
